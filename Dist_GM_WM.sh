@@ -1,12 +1,12 @@
 #!/bin/bash
 
-MNI_152_FreeSurf="/Users/ngh92/Documents/Periventricular_WM_Study/Registered_MAPS_for_Pervientricular_WM/Tensor_Maps_MNI_FA_Reg_2mm/Distance_Analysis_2024_01_25/Distance_to_Superficial_Surface/MNI152_T1_1mm/mri"
-MNI_2mm="/Users/ngh92/Documents/Periventricular_WM_Study/Registered_MAPS_for_Pervientricular_WM/Tensor_Maps_MNI_FA_Reg_2mm/FSL_HCP1065_FA_2mm.nii.gz"
+MNI_152_FreeSurf="Pathway/to/MNI152/FreeSurfer"
+MNI_2mm="Pathway/to/FSL_HCP1065_FA_2mm.nii.gz"
 
-Right_Superficial="/Users/ngh92/Documents/Periventricular_WM_Study/Registered_MAPS_for_Pervientricular_WM/Tensor_Maps_MNI_FA_Reg_2mm/Distance_Analysis_2024_01_25/Distance_to_Superficial_Surface/MNI152_T1_1mm/myaparc_36wm2max_Right_Temporal_Superficial_w_Hippo_Amyg_2mm_Iso_Superfical_Mask.nii.gz"
-Right_Deep="/Users/ngh92/Documents/Periventricular_WM_Study/Registered_MAPS_for_Pervientricular_WM/Tensor_Maps_MNI_FA_Reg_2mm/Distance_Analysis_2024_01_25/Distance_to_Superficial_Surface/MNI152_T1_1mm/myaparc_36wm2max_Right_Temporal_Superficial_w_Hippo_Amyg_2mm_Iso_Deep_Mask.nii.gz"
-Left_Superficial="/Users/ngh92/Documents/Periventricular_WM_Study/Registered_MAPS_for_Pervientricular_WM/Tensor_Maps_MNI_FA_Reg_2mm/Distance_Analysis_2024_01_25/Distance_to_Superficial_Surface/MNI152_T1_1mm/myaparc_36wm2max_Left_Temporal_Superficial_w_Hippo_Amyg_2mm_Iso_Superfical_Mask.nii.gz"
-Left_Deep="/Users/ngh92/Documents/Periventricular_WM_Study/Registered_MAPS_for_Pervientricular_WM/Tensor_Maps_MNI_FA_Reg_2mm/Distance_Analysis_2024_01_25/Distance_to_Superficial_Surface/MNI152_T1_1mm/myaparc_36wm2max_Left_Temporal_Superficial_w_Hippo_Amyg_2mm_Iso_Deep_Mask.nii.gz"
+Right_Superficial="Pathway/to/myaparc_36wm2max_Right_Temporal_Superficial_w_Hippo_Amyg_2mm_Iso_Superfical_Mask.nii.gz"
+Right_Deep="Pathway/to/myaparc_36wm2max_Right_Temporal_Superficial_w_Hippo_Amyg_2mm_Iso_Deep_Mask.nii.gz"
+Left_Superficial="Pathway/to/myaparc_36wm2max_Left_Temporal_Superficial_w_Hippo_Amyg_2mm_Iso_Superfical_Mask.nii.gz"
+Left_Deep="Pathway/to/myaparc_36wm2max_Left_Temporal_Superficial_w_Hippo_Amyg_2mm_Iso_Deep_Mask.nii.gz"
 
 mri_convert ${MNI_152_FreeSurf}/ribbon.mgz ${MNI_152_FreeSurf}/ribbon.nii.gz
 
@@ -45,11 +45,11 @@ fslmaths ${MNI_152_FreeSurf}/ribbon_Right_GM_Hip_Amy_Dist_2mm.nii.gz -mul ${MNI_
 
 #Now trim all to get the assoicated FA maps
 
-List="/Users/ngh92/Documents/Periventricular_WM_Study/Registered_MAPS_for_Pervientricular_WM/Tensor_Maps_MNI_FA_Reg_2mm/Overall_List.txt"
-Output_Folder="/Users/ngh92/Documents/Periventricular_WM_Study/Registered_MAPS_for_Pervientricular_WM/Tensor_Maps_MNI_FA_Reg_2mm/Deep_vs_Superficial_WM_FreeSurfer_Def"
-FA_Maps="/Users/ngh92/Documents/Periventricular_WM_Study/Registered_MAPS_for_Pervientricular_WM/Tensor_Maps_MNI_FA_Reg_2mm"
-Script_Dir="/Users/ngh92/Documents/GitHub/dMRI_Dist_Version_2"
-Initial_Pathway="/Users/ngh92/Documents/Periventricular_WM_Study/Registered_MAPS_for_Pervientricular_WM/Tensor_Maps_MNI_FA_Reg_2mm/Distance_Analysis_2024_01_25/Distance_to_Superficial_Surface/MNI152_T1_1mm"
+List="Patient_Overall_List.txt"
+Output_Folder="Deep_vs_Superficial_WM_FreeSurfer_Def"
+FA_Maps="Tensor_Maps_MNI_FA_Reg_2mm"
+Script_Dir="dMRI_Dist_Version_2"
+Initial_Pathway="Pathway/to/MNI152_T1_1mm"
 
 fslmaths ${MNI_152_FreeSurf}/ribbon_Left_GM_Hip_Amy_Dist_Temporal.nii.gz -bin ${MNI_152_FreeSurf}/ribbon_Left_GM_Hip_Amy_Dist_Temporal_Mask.nii.gz
 fslmaths ${MNI_152_FreeSurf}/ribbon_Right_GM_Hip_Amy_Dist_Temporal.nii.gz -bin ${MNI_152_FreeSurf}/ribbon_Right_GM_Hip_Amy_Dist_Temporal_Mask.nii.gz
